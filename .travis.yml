@@ -1,0 +1,9 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t maksimuska/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true maksimuska/docker-react npm run test -- --coverage
